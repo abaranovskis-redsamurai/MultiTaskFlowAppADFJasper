@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelCollection id="pc1" styleClass="AFStretchWidth" featuresOff="statusBar">
+    <f:facet name="menus"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="statusbar"/>
+    <af:table value="#{bindings.LocationsView1.collectionModel}" var="row" rows="#{bindings.LocationsView1.rangeSize}"
+              emptyText="#{bindings.LocationsView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+              fetchSize="#{bindings.LocationsView1.rangeSize}" rowBandingInterval="0" id="t1"
+              columnStretching="column:c2" scrollPolicy="page">
+      <af:column sortProperty="#{bindings.LocationsView1.hints.LocationId.name}" sortable="false"
+                 headerText="#{bindings.LocationsView1.hints.LocationId.label}" id="c1">
+        <af:outputText value="#{row.LocationId}" id="ot1">
+          <af:convertNumber groupingUsed="false" pattern="#{bindings.LocationsView1.hints.LocationId.format}"/>
+        </af:outputText>
+      </af:column>
+      <af:column sortProperty="#{bindings.LocationsView1.hints.StreetAddress.name}" sortable="false"
+                 headerText="#{bindings.LocationsView1.hints.StreetAddress.label}" id="c2">
+        <af:outputText value="#{row.StreetAddress}" id="ot2"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.LocationsView1.hints.PostalCode.name}" sortable="false"
+                 headerText="#{bindings.LocationsView1.hints.PostalCode.label}" id="c3">
+        <af:outputText value="#{row.PostalCode}" id="ot3"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.LocationsView1.hints.City.name}" sortable="false"
+                 headerText="#{bindings.LocationsView1.hints.City.label}" id="c4">
+        <af:outputText value="#{row.City}" id="ot4"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.LocationsView1.hints.StateProvince.name}" sortable="false"
+                 headerText="#{bindings.LocationsView1.hints.StateProvince.label}" id="c5">
+        <af:outputText value="#{row.StateProvince}" id="ot5"/>
+      </af:column>
+      <af:column sortProperty="#{bindings.LocationsView1.hints.CountryId.name}" sortable="false"
+                 headerText="#{bindings.LocationsView1.hints.CountryId.label}" id="c6">
+        <af:outputText value="#{row.CountryId}" id="ot6"/>
+      </af:column>
+    </af:table>
+  </af:panelCollection>
+</ui:composition>

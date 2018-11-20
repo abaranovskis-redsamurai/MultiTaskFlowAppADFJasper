@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:resource type="javascript" source="https://host/jasperserver-pro/client/visualize.js?_opt=true"/>
+  <af:resource type="javascript">
+      console.log('LOADING REPORT');
+      visualize({
+        auth: {
+            name: "user",
+            password: "password",
+            organization: "ORG"}
+      }, function (v) {
+            v("#reportContainer").report({
+                resource: "/public/Samples/Reports/AllAccounts",
+                error: handleError
+            });
+            function handleError(err) {
+                alert(err.message);
+            }
+      });
+  </af:resource>
+  <div xmlns="http://www.w3.org/1999/xhtml" id="reportContainer"></div>
+</ui:composition>

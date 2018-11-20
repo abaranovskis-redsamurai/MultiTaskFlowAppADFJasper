@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HrModule"
+  Version="12.2.1.16.48"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="DepartmentsView1"
+    ViewObjectName="com.redsamurai.model.views.DepartmentsView"/>
+  <ViewUsage
+    Name="EmployeesView1"
+    ViewObjectName="com.redsamurai.model.views.EmployeesView"/>
+  <ViewUsage
+    Name="LocationsView1"
+    ViewObjectName="com.redsamurai.model.views.LocationsView"/>
+  <ViewUsage
+    Name="DepartmentsView2"
+    ViewObjectName="com.redsamurai.model.views.DepartmentsView"/>
+  <ViewUsage
+    Name="EmployeesView2"
+    ViewObjectName="com.redsamurai.model.views.EmployeesView"/>
+  <ViewUsage
+    Name="EmployeesView3"
+    ViewObjectName="com.redsamurai.model.views.EmployeesView"/>
+  <ViewUsage
+    Name="DepartmentsView3"
+    ViewObjectName="com.redsamurai.model.views.DepartmentsView"/>
+  <ViewUsage
+    Name="JobsView1"
+    ViewObjectName="com.redsamurai.model.views.JobsView"/>
+  <ViewLinkUsage
+    Name="DeptMgrFkLink1"
+    ViewLinkObjectName="com.redsamurai.model.views.links.DeptMgrFkLink"
+    SrcViewUsageName="com.redsamurai.model.HrModule.EmployeesView1"
+    DstViewUsageName="com.redsamurai.model.HrModule.DepartmentsView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="EmpManagerFkLink1"
+    ViewLinkObjectName="com.redsamurai.model.views.links.EmpManagerFkLink"
+    SrcViewUsageName="com.redsamurai.model.HrModule.EmployeesView1"
+    DstViewUsageName="com.redsamurai.model.HrModule.EmployeesView2"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="EmpDeptFkLink1"
+    ViewLinkObjectName="com.redsamurai.model.views.links.EmpDeptFkLink"
+    SrcViewUsageName="com.redsamurai.model.HrModule.DepartmentsView1"
+    DstViewUsageName="com.redsamurai.model.HrModule.EmployeesView3"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="DeptLocFkLink1"
+    ViewLinkObjectName="com.redsamurai.model.views.links.DeptLocFkLink"
+    SrcViewUsageName="com.redsamurai.model.HrModule.LocationsView1"
+    DstViewUsageName="com.redsamurai.model.HrModule.DepartmentsView3"
+    Reversed="false"/>
+</AppModule>

@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Main" id="d1">
+        <af:form id="f1">
+            <af:panelStretchLayout id="psl1">
+                <f:facet name="center">
+                    <af:panelGroupLayout id="pgl3" partialTriggers="np1:cni1 np1:cni2 np1:cni3 np1:cni4 np1:cni5"
+                                         binding="#{pageFlowScope.mainBean.rootTabComp}">
+                        <af:panelTabbed id="pt1" tabRemoval="all" dimensionsFrom="disclosedChild"
+                                        binding="#{pageFlowScope.mainBean.panelTabbed}"
+                                        rendered="#{pageFlowScope.mainBean.tabsSize gt 0}">
+                            <af:forEach items="#{bindings.regions.taskFlowBindingList}" var="tf" varStatus="status">
+                                <af:showDetailItem text="#{tf.name}"
+                                                   itemListener="#{pageFlowScope.mainBean.handleCloseTabItem}"
+                                                   disclosed="#{pageFlowScope.mainBean.disclosed[tf.name]}"
+                                                   disclosureListener="#{pageFlowScope.mainBean.disclosureListener}"
+                                                   id="sdi1">
+                                    <af:region value="#{tf.regionModel}" id="r1#{status.index}"/>
+                                    <f:attribute name="tfName" value="#{tf.name}"/>
+                                </af:showDetailItem>
+                            </af:forEach>
+                        </af:panelTabbed>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="top">
+                    <af:panelGroupLayout id="pgl1" halign="end" layout="vertical">
+                        <af:spacer width="10" height="10" id="s1"/>
+                        <af:panelGroupLayout id="pgl2" layout="horizontal">
+                            <af:navigationPane hint="buttons" id="np1">
+                                <af:commandNavigationItem id="cni1" text="Locations"
+                                                          actionListener="#{pageFlowScope.mainBean.regionOneLaunch}"
+                                                          partialSubmit="true"/>
+                                <af:commandNavigationItem text="Departments" id="cni2"
+                                                          actionListener="#{pageFlowScope.mainBean.regionTwoLaunch}"
+                                                          partialSubmit="true"/>
+                                <af:commandNavigationItem text="Employees" id="cni3"
+                                                          actionListener="#{pageFlowScope.mainBean.regionThreeLaunch}"
+                                                          partialSubmit="true"/>
+                                <af:commandNavigationItem text="Jobs" id="cni4"
+                                                          actionListener="#{pageFlowScope.mainBean.regionFourLaunch}"
+                                                          partialSubmit="true"/>
+                                <af:commandNavigationItem text="Report" id="cni5" partialSubmit="true"
+                                                          actionListener="#{pageFlowScope.mainBean.regionReportLaunch}"/>
+                            </af:navigationPane>
+                            <af:spacer width="10" height="10" id="s2"/>
+                        </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelStretchLayout>
+        </af:form>
+    </af:document>
+</f:view>
